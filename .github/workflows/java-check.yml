@@ -1,0 +1,49 @@
+name: Java Compile Check
+
+on:
+  push:
+    paths:
+      - "solutions/**/*.java"
+      - ".github/workflows/java-check.yml"
+  pull_request:
+    paths:
+      - "solutions/**/*.java"
+      - ".github/workflows/java-check.yml"
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Compile every solution
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ ! -d solutions ]; then
+            echo "No solutions directory yet."
+            exit 0
+          fi
+
+          found=0
+          while IFS= read -r -d '' file; do
+            found=1
+            temp_dir="$(mktemp -d)"
+            echo "Compiling $file"
+            javac -encoding UTF-8 -d "$temp_dir" "$file"
+            rm -rf "$temp_dir"
+          done < <(find solutions -type f -name "*.java" -print0)
+
+          if [ "$found" -eq 0 ]; then
+            echo "No Java solutions found."
+          fi
