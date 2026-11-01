@@ -15,7 +15,7 @@ public class Main {
 
         int foreidx = 0;
         int nowidx = 1;
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
         int cnt = 1;
 
         while(nowidx<=n){
@@ -27,12 +27,12 @@ public class Main {
 
             if(str[foreidx] != str[nowidx]){
                 if(cnt != 1){
-                    answer += str[foreidx] + String.valueOf(cnt);
+                    answer.append(str[foreidx]).append(cnt);
                     cnt = 1;
                     foreidx = nowidx;
                     nowidx++;
                 } else {
-                    answer += str[foreidx];
+                    answer.append(str[foreidx]);
                     foreidx = nowidx;
                     nowidx++;
                 }
