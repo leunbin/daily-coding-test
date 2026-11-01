@@ -11,13 +11,13 @@ n : 서버 개수
 map(서버Id, 인덱스)
 
 for(i : 0 ~ n)
+    if(map.has(서버 Id))  
+        return 인덱스+1
+
     if(!map.has(서버Id))
         map.add(서버Id, 인덱스)
 
-    if(map.has(서버 Id))
-        return 인덱스+1
-
-return 0
+return -1
 
 ## 복잡도
 
