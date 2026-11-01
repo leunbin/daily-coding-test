@@ -19,7 +19,7 @@ Collections.sort(queue, (a,b) ->
         return a.id - b.id
     if(a.pri == b.pri)
         return a.time - b.time
-    return a.pri - b.pri
+    return b.pri - a.pri
 )
 
 for(i: 0 ~ n)
