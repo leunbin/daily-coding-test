@@ -30,7 +30,8 @@ public class Main {
                     processes.addFirst(id);
                     break;
                 case "PROCESS":
-                    System.out.println(processes.removeFirst());
+                    Integer answer = processes.pollFirst();
+                    System.out.println(answer == null ? -1 : answer);
                     break;
             }
         }
