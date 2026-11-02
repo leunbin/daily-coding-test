@@ -18,17 +18,17 @@ servers : 서버 배열
 start, middle, end, max
 
 for(start: 0 ~ N-2)
-    for(middle: start ~ N-1)
-        for(end: middle ~ N)
+    for(middle: start+1 ~ N-1)
+        for(end: middle+1 ~ N)
             int sum = start + middle + end
-            if(sum <L)
+            if(sum <= L)
                 max = Math.max(max, sum)
                 
 sout(max)
 ```
 ## 복잡도
 
-- 시간 복잡도: O(N)
+- 시간 복잡도: O(N³)
 - 공간 복잡도: O(N)
 
 ## 구현
