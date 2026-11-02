@@ -13,28 +13,18 @@
 ```
 L : 처리 용량 한계값
 N : 서버 개수
-servers : 서버 리스트
-
-servers.sort((a,b) -> b - a) // 내림차순
+servers : 서버 배열
 
 start, middle, end, max
 
-while(start < N-3)
-    max = Math.min(start+middle+end, max)
-    
-    if(max > L)
-        if(end < N-1) 
-            end++
-        else if(end == N-1)
-            if(middle < N-2)
-                middle++
-                end = middle+1
-            else if
-                start++
-                middle = start+1
-                end = middle+1
-    else
-        sout(max)
+for(start: 0 ~ N-2)
+    for(middle: start ~ N-1)
+        for(end: middle ~ N)
+            int sum = start + middle + end
+            if(sum <L)
+                max = Math.max(max, sum)
+                
+sout(max)
 ```
 ## 복잡도
 

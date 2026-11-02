@@ -9,41 +9,27 @@ public class Main {
 
         int N = Integer.parseInt(st.nextToken());
         int L = Integer.parseInt(st.nextToken());
+        int max = 0;
 
         st = new StringTokenizer(br.readLine());
-        List<Integer> servers = new ArrayList<>();
+        int[] servers = new int[N];
 
         for(int i = 0; i<N; i++){
-            servers.add(Integer.parseInt(st.nextToken()));
+            int el = Integer.parseInt(st.nextToken());
+            servers[i] = el;
         }
 
-        servers.sort((a,b) -> b-a);
-
-        int start = 0;
-        int middle = 1;
-        int end = 2;
-        int max = servers.get(start)+servers.get(middle)+servers.get(end);
-
-        while(start < N-3) {
-            max = Math.min(max, servers.get(start)+servers.get(middle)+servers.get(end));
-
-            if(max > L) {
-                if(end < N-1){
-                    end++;
-                } else {
-                    if(middle < N-2) {
-                        middle++;
-                        end = middle+1;
-                    } else {
-                        start++;
-                        middle = start + 1;
-                        end = middle + 1;
+        for(int start = 0; start < N-2; start++){
+            for(int middle = start+1; middle<N-1; middle++) {
+                for(int end = middle+1; end<N; end++){
+                    int sum = servers[start]+servers[middle]+servers[end];
+                    if(sum <= L) {
+                        max = Math.max(max, sum);
                     }
                 }
-            } else {
-                System.out.println(max);
-                break;
             }
         }
+
+        System.out.println(max);
     }
 }
