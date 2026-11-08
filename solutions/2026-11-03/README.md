@@ -13,15 +13,14 @@ N : 분
 L : 제한값
 start = 0, end = 0 max = 0 sum = end
 
-while(start < N || start <= end)
-    if(sum < L)
-        max = Math.max(max, end-start)  
-        end++
-        sum += end
-    else
+for(end: 0 ~ N )
+    sum += end
+    
+    while(sum > L)
         sum -= start
         start++
-        end++
+    
+    max = Math.max(max, end-start+1)
     
       
 sout(max)

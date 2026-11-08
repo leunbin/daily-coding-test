@@ -9,7 +9,7 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int N = Integer.parseInt(st.nextToken());
-        long L = Integer.parseInt(st.nextToken());
+        long L = Long.parseLong(st.nextToken());
         st = new StringTokenizer(br.readLine());
 
         int[] req = new int[N];
