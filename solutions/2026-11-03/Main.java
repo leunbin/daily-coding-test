@@ -9,7 +9,7 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int N = Integer.parseInt(st.nextToken());
-        int L = Integer.parseInt(st.nextToken());
+        long L = Integer.parseInt(st.nextToken());
         st = new StringTokenizer(br.readLine());
 
         int[] req = new int[N];
@@ -19,20 +19,20 @@ public class Main {
             req[i] = el;
         }
 
-        int start;
-        int end;
+        int start = 0;
         int max = 0;
+        long sum = 0;
 
-        for(start = 0; start < N; start++){
-            int sum = 0;
-            for(end = start; end<N; end++){
-                sum += req[end];
-                if(sum > L){
-                    int length = end - start;
-                    max = Math.max(max, length);
-                    break;
-                }
+        for(int end = 0; end < N; end++){
+            sum += req[end];
+
+            while(sum > L){
+                sum -= req[start];
+                start++;
             }
+
+            int length = end - start + 1;
+            max = Math.max(max, length);
         }
 
         System.out.println(max);

@@ -11,22 +11,24 @@ N분동안 받은 요청 수가 분 단위로 주어짐
 ```
 N : 분
 L : 제한값
-start = 0, end = 0 max = 0
+start = 0, end = 0 max = 0 sum = end
 
-for(start: 0 ~ N)
-    sum = 0
-    for (end: start ~ N)
+while(start < N || start <= end)
+    if(sum < L)
+        max = Math.max(max, end-start)  
+        end++
         sum += end
-        if(sum > L)
-            end--
-            break
-        length = end - start
-        max = max(max, length)
+    else
+        sum -= start
+        start++
+        end++
+    
+      
 sout(max)
 ```
 ## 복잡도
 
-- 시간 복잡도: O((N²)
+- 시간 복잡도: O((N)
 - 공간 복잡도: O(N)
 
 ## 구현
