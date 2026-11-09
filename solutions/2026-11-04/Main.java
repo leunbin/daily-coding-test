@@ -10,7 +10,7 @@ public class Main {
         int N = Integer.parseInt(st.nextToken());
         int Q = Integer.parseInt(st.nextToken());
 
-        int[] stocks = new int[N+1];
+        long[] stocks = new long[N+1];
 
         st = new StringTokenizer(br.readLine());
 
